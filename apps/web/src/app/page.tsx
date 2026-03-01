@@ -740,12 +740,12 @@ Known issues (backlog):
           <h3 className="text-2xl font-bold mb-6">Welcome Back</h3>
           <form onSubmit={submitLogin} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Username</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Email or username</label>
               <input
                 value={loginEmailOrUser}
                 onChange={(e) => setLoginEmailOrUser(e.target.value)}
                 className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange-500 outline-none transition-colors"
-                placeholder="admin"
+                placeholder="admin or admin@cipherdocs.local"
               />
             </div>
             <div>

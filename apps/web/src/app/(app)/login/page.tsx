@@ -51,8 +51,13 @@ export default function LoginPage() {
 
         <form onSubmit={onSubmit} className="row" style={{ maxWidth: 520 }}>
           <div className="field">
-            <div className="label">Username</div>
-            <input value={username} onChange={(e) => setUsername(e.target.value)} autoComplete="username" />
+            <div className="label">Email or username</div>
+            <input
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              autoComplete="username"
+              placeholder="admin or admin@cipherdocs.local"
+            />
           </div>
           <div className="field">
             <div className="label">Password</div>

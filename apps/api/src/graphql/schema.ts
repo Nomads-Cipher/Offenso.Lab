@@ -173,7 +173,10 @@ export const resolvers = {
       };
     },
     login: async (_: unknown, args: { username: string; password: string }) => {
-      const user = await UserModel.findOne({ username: args.username }).lean();
+      const identifier = String(args.username ?? "");
+      const user = await UserModel.findOne({
+        $or: [{ username: identifier }, { email: identifier }]
+      }).lean();
       if (!user) throw new Error("User not found");
 
       const hashed = md5(String(args.password ?? ""));
