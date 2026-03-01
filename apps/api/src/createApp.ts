@@ -14,8 +14,19 @@ import { uploadRouter } from "./routes/upload.js";
 let appPromise: Promise<express.Express> | null = null;
 
 async function initApp() {
-  await ensureUploadDir();
-  await connectToMongo();
+  try {
+    await ensureUploadDir();
+  } catch {
+    // In serverless environments the filesystem may be restricted.
+    // Continue booting; upload route may fail later.
+  }
+
+  try {
+    await connectToMongo();
+  } catch {
+    // If DB connection fails, continue booting so health/errors are visible.
+    // Resolvers/routes depending on DB may fail at request time.
+  }
 
   const app = express();
 
@@ -47,6 +58,12 @@ async function initApp() {
 
 export async function getApp() {
   if (!appPromise) appPromise = initApp();
-  return appPromise;
+  try {
+    return await appPromise;
+  } catch (e) {
+    // Don't permanently cache a failed init for the whole function instance
+    appPromise = null;
+    throw e;
+  }
 }
 
