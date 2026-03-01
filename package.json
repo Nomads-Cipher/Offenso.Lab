@@ -1,14 +1,26 @@
 {
   "name": "cipherdocs",
   "private": true,
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "dependencies": {
+    "next": "16.1.6",
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
+  },
   "scripts": {
     "dev": "concurrently -n api,web \"npm run dev:api\" \"npm run dev:web\"",
     "dev:api": "npm --prefix apps/api run dev",
     "dev:web": "npm --prefix apps/web run dev",
     "seed": "npm --prefix apps/api run seed",
-    "build": "npm run build:api && npm run build:web",
+    "build": "npm run hostinger:build",
+    "start": "npm run hostinger:start",
+    "build:all": "npm run build:api && npm run build:web",
     "build:api": "npm --prefix apps/api run build",
     "build:web": "npm --prefix apps/web run build",
+    "hostinger:build": "node scripts/hostinger-build.mjs",
+    "hostinger:start": "node scripts/hostinger-start.mjs",
     "vercel:install": "npm --prefix apps/web install --no-fund --no-audit",
     "vercel:build": "npm --prefix apps/web run build"
   },
