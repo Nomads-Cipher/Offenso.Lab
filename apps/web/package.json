@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "start:hostinger": "node scripts/start-hostinger.mjs",
+    "vercel:install": "npm install --no-fund --no-audit",
+    "vercel:build": "npm run build",
     "lint": "eslint"
   },
   "dependencies": {
