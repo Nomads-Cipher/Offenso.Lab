@@ -8,7 +8,9 @@
     "seed": "npm --prefix apps/api run seed",
     "build": "npm run build:api && npm run build:web",
     "build:api": "npm --prefix apps/api run build",
-    "build:web": "npm --prefix apps/web run build"
+    "build:web": "npm --prefix apps/web run build",
+    "vercel:install": "npm --prefix apps/web install --no-fund --no-audit",
+    "vercel:build": "npm --prefix apps/web run build"
   },
   "devDependencies": {
     "concurrently": "^9.2.1"
