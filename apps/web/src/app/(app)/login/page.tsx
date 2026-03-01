@@ -216,16 +216,6 @@ export default function LoginPage() {
                   <a href="/register" className="font-bold text-orange-primary hover:underline">
                     Create account
                   </a>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setUsername("admin@cipherdocs.local");
-                      setPassword("password");
-                    }}
-                    className="text-gray-500 hover:text-gray-700"
-                  >
-                    Use demo
-                  </button>
                 </div>
               </form>
             </div>

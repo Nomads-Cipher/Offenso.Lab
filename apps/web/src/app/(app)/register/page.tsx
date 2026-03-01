@@ -232,17 +232,6 @@ export default function RegisterPage() {
                   <a href="/login" className="font-bold text-orange-primary hover:underline">
                     Sign in
                   </a>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setUsername("student.user");
-                      setEmail("student.user@cipherdocs.local");
-                      setPassword("1234");
-                    }}
-                    className="text-gray-500 hover:text-gray-700"
-                  >
-                    Use demo
-                  </button>
                 </div>
               </form>
             </div>
