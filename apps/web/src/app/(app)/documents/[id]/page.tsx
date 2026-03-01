@@ -140,94 +140,96 @@ export default function DocumentPage() {
   if (!doc) return null;
 
   return (
-    <div className="row" style={{ alignItems: "flex-start" }}>
-      <div className="card" style={{ flex: "1 1 680px" }}>
-        <div className="cardHeader">
-          <div className="pill">Document #{doc.id}</div>
-        </div>
-        <div className="cardBody">
-          <div className="row" style={{ justifyContent: "space-between", alignItems: "center" }}>
-            <div>
-              <div style={{ fontSize: 22, fontWeight: 900 }}>{doc.title}</div>
-              <div className="hint">{doc.filename}</div>
-            </div>
-            <div className="btnRow">
-              <button className="btn btnPrimary" onClick={onDownload}>
-                Download
-              </button>
-              <button className="btn btnDanger" onClick={onDelete}>
-                Delete
-              </button>
-              <Link className="btn" href="/dashboard">
-                Back
-              </Link>
-            </div>
+    <div className="main">
+      <div className="row" style={{ alignItems: "flex-start" }}>
+        <div className="card" style={{ flex: "1 1 680px" }}>
+          <div className="cardHeader">
+            <div className="pill">Document #{doc.id}</div>
           </div>
-
-          <div className="row" style={{ marginTop: 14 }}>
-            <div className="card" style={{ flex: "1 1 320px" }}>
-              <div className="cardBody">
-                <div className="label">Owner</div>
-                <div style={{ marginBottom: 10 }}>{doc.ownerId}</div>
-                <div className="label">Category</div>
-                <div style={{ marginBottom: 10 }}>
-                  <span className="pill">{doc.category}</span>
-                </div>
-                <div className="label">Classification</div>
-                <div>
-                  <span className="pill">{doc.classification}</span>
-                </div>
+          <div className="cardBody">
+            <div className="row" style={{ justifyContent: "space-between", alignItems: "center" }}>
+              <div>
+                <div style={{ fontSize: 22, fontWeight: 900 }}>{doc.title}</div>
+                <div className="hint">{doc.filename}</div>
+              </div>
+              <div className="btnRow">
+                <button className="btn btnPrimary" onClick={onDownload}>
+                  Download
+                </button>
+                <button className="btn btnDanger" onClick={onDelete}>
+                  Delete
+                </button>
+                <Link className="btn" href="/dashboard">
+                  Back
+                </Link>
               </div>
             </div>
-            <div className="card" style={{ flex: "2 1 420px" }}>
-              <div className="cardBody">
-                <div className="label">Storage</div>
-                <div className="hint" style={{ wordBreak: "break-all" }}>
-                  {doc.filePath}
-                </div>
-                <div style={{ height: 10 }} />
-                <div className="label">UUID</div>
-                <div className="hint" style={{ wordBreak: "break-all" }}>
-                  {doc.uuid}
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <div style={{ marginTop: 18 }}>
-            <div style={{ fontWeight: 800, marginBottom: 10 }}>Comments</div>
-            <div className="row" style={{ gap: 10 }}>
-              <div className="card" style={{ flex: "1 1 520px" }}>
-                <div className="cardBody">
-                  {comments.length ? (
-                    <div style={{ display: "grid", gap: 10 }}>
-                      {comments.map((c) => (
-                        <div key={c.id} className="card" style={{ boxShadow: "none" }}>
-                          <div className="cardBody">
-                            <div className="hint" style={{ marginBottom: 6 }}>
-                              {c.authorId}
-                            </div>
-                            <div>{c.body}</div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="hint">No comments yet.</div>
-                  )}
-                </div>
-              </div>
+            <div className="row" style={{ marginTop: 14 }}>
               <div className="card" style={{ flex: "1 1 320px" }}>
                 <div className="cardBody">
-                  <form onSubmit={onAddComment} className="row">
-                    <div className="field">
-                      <div className="label">Add comment</div>
-                      <textarea value={commentBody} onChange={(e) => setCommentBody(e.target.value)} />
-                    </div>
-                    <button className="btn btnPrimary" type="submit">
-                      Post
-                    </button>
-                  </form>
+                  <div className="label">Owner</div>
+                  <div style={{ marginBottom: 10 }}>{doc.ownerId}</div>
+                  <div className="label">Category</div>
+                  <div style={{ marginBottom: 10 }}>
+                    <span className="pill">{doc.category}</span>
+                  </div>
+                  <div className="label">Classification</div>
+                  <div>
+                    <span className="pill">{doc.classification}</span>
+                  </div>
+                </div>
+              </div>
+              <div className="card" style={{ flex: "2 1 420px" }}>
+                <div className="cardBody">
+                  <div className="label">Storage</div>
+                  <div className="hint" style={{ wordBreak: "break-all" }}>
+                    {doc.filePath}
+                  </div>
+                  <div style={{ height: 10 }} />
+                  <div className="label">UUID</div>
+                  <div className="hint" style={{ wordBreak: "break-all" }}>
+                    {doc.uuid}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div style={{ marginTop: 18 }}>
+              <div style={{ fontWeight: 800, marginBottom: 10 }}>Comments</div>
+              <div className="row" style={{ gap: 10 }}>
+                <div className="card" style={{ flex: "1 1 520px" }}>
+                  <div className="cardBody">
+                    {comments.length ? (
+                      <div style={{ display: "grid", gap: 10 }}>
+                        {comments.map((c) => (
+                          <div key={c.id} className="card" style={{ boxShadow: "none" }}>
+                            <div className="cardBody">
+                              <div className="hint" style={{ marginBottom: 6 }}>
+                                {c.authorId}
+                              </div>
+                              <div>{c.body}</div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="hint">No comments yet.</div>
+                    )}
+                  </div>
+                </div>
+                <div className="card" style={{ flex: "1 1 320px" }}>
+                  <div className="cardBody">
+                    <form onSubmit={onAddComment} className="row">
+                      <div className="field">
+                        <div className="label">Add comment</div>
+                        <textarea value={commentBody} onChange={(e) => setCommentBody(e.target.value)} />
+                      </div>
+                      <button className="btn btnPrimary" type="submit">
+                        Post
+                      </button>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>

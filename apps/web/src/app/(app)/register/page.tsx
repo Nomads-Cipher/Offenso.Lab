@@ -40,51 +40,53 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="card">
-      <div className="cardHeader">
-        <div className="pill">Create account</div>
-      </div>
-      <div className="cardBody">
-        <h1 style={{ fontSize: 26, marginBottom: 12 }}>Get started</h1>
-        <p className="hint" style={{ marginBottom: 16 }}>
-          Create your CipherDocs account to upload and manage documents.
-        </p>
+    <div className="main">
+      <div className="card">
+        <div className="cardHeader">
+          <div className="pill">Create account</div>
+        </div>
+        <div className="cardBody">
+          <h1 style={{ fontSize: 26, marginBottom: 12 }}>Get started</h1>
+          <p className="hint" style={{ marginBottom: 16 }}>
+            Create your CipherDocs account to upload and manage documents.
+          </p>
 
-        <form onSubmit={onSubmit} className="row" style={{ maxWidth: 520 }}>
-          <div className="field">
-            <div className="label">Username</div>
-            <input value={username} onChange={(e) => setUsername(e.target.value)} autoComplete="username" />
-          </div>
-          <div className="field">
-            <div className="label">Email</div>
-            <input value={email} onChange={(e) => setEmail(e.target.value)} autoComplete="email" />
-          </div>
-          <div className="field">
-            <div className="label">Password</div>
-            <input
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              type="password"
-              autoComplete="new-password"
-              placeholder="Choose a password"
-            />
-          </div>
-
-          <div className="btnRow">
-            <button className="btn btnPrimary" type="submit" disabled={loading}>
-              {loading ? "Creating..." : "Create account"}
-            </button>
-            <a className="btn" href="/login">
-              Sign in
-            </a>
-          </div>
-
-          {error ? (
-            <div className="hint" style={{ color: "var(--danger)" }}>
-              {error}
+          <form onSubmit={onSubmit} className="row" style={{ maxWidth: 520 }}>
+            <div className="field">
+              <div className="label">Username</div>
+              <input value={username} onChange={(e) => setUsername(e.target.value)} autoComplete="username" />
             </div>
-          ) : null}
-        </form>
+            <div className="field">
+              <div className="label">Email</div>
+              <input value={email} onChange={(e) => setEmail(e.target.value)} autoComplete="email" />
+            </div>
+            <div className="field">
+              <div className="label">Password</div>
+              <input
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                type="password"
+                autoComplete="new-password"
+                placeholder="Choose a password"
+              />
+            </div>
+
+            <div className="btnRow">
+              <button className="btn btnPrimary" type="submit" disabled={loading}>
+                {loading ? "Creating..." : "Create account"}
+              </button>
+              <a className="btn" href="/login">
+                Sign in
+              </a>
+            </div>
+
+            {error ? (
+              <div className="hint" style={{ color: "var(--danger)" }}>
+                {error}
+              </div>
+            ) : null}
+          </form>
+        </div>
       </div>
     </div>
   );
