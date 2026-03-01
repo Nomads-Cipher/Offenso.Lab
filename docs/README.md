@@ -33,15 +33,5 @@ See `docs/labs/` for step-by-step exercises.
 Run this locally (loopback) for classroom use; avoid exposing it on a public interface.
 
 ### Deploying the Web app on Hostinger (Business plan)
-Hostinger’s **Node.js Web App** importer expects a supported framework at the **repository root** with standard `build`/`start` scripts.
-
-- **Framework**: Next.js
-- **Build command**: `npm run build`
-- **Start command**: `npm start`
-- **Node version**: set to **22.x** (latest) in hPanel
-
-Environment variables (hPanel → Node.js app → Environment):
-- **`NEXT_PUBLIC_API_BASE`**: your public API base URL (example: `https://api.your-domain.com`)
-
-Note: the API (`apps/api`) should be deployed separately (another Hostinger Node.js app / subdomain) or hosted elsewhere, then point the web app to it via `NEXT_PUBLIC_API_BASE`.
+Hostinger’s Node.js Apps can deploy from a **subfolder**. This repo contains **two apps**:\n\n- Web (Next.js): `apps/web`\n- API (Express + GraphQL): `apps/api`\n\nDeploy them as **two Hostinger Node.js Apps** (recommended: main domain for web, subdomain for API).\n+\n+#### A) Deploy the Web app (Next.js)\n+- **Framework preset**: Next.js\n+- **Root directory**: `apps/web`\n+- **Node version**: 22.x\n+- **Build command**: `npm install && npm run build`\n+- **Start command**: `npm run start:hostinger`\n+\n+Environment variables:\n+- **`NEXT_PUBLIC_API_BASE`**: your API base URL (example: `https://api.your-domain.com`)\n+\n+#### B) Deploy the API app (Express)\n+- **Framework preset**: Express.js\n+- **Root directory**: `apps/api`\n+- **Node version**: 22.x\n+- **Build command**: `npm install && npm run build`\n+- **Start command**: `npm run start:hostinger`\n+\n+Environment variables:\n+- **`MONGODB_URI`**: your Mongo connection string\n+- (Optional) **`UPLOAD_DIR`**: `uploads`\n+\n+Note: Hostinger provides `PORT` automatically. The start script binds to `0.0.0.0` so it will be reachable by the platform.
 
