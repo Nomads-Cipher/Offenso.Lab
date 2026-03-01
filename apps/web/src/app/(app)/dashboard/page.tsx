@@ -204,17 +204,12 @@ export default function DashboardPage() {
             </div>
             <div className="field">
               <div className="label">File</div>
-              <input
-                type="file"
-                onChange={(e) => setFile(e.target.files?.[0] ?? null)}
-              />
+              <input type="file" onChange={(e) => setFile(e.target.files?.[0] ?? null)} />
             </div>
             <button className="btn btnPrimary" type="submit" disabled={uploading}>
               {uploading ? "Uploading..." : "Upload document"}
             </button>
-            <div className="hint">
-              Tip: you can upload text files, reports, and checklists.
-            </div>
+            <div className="hint">Tip: you can upload text files, reports, and checklists.</div>
           </form>
         </div>
       </div>

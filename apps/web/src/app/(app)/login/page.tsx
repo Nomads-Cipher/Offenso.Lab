@@ -73,7 +73,11 @@ export default function LoginPage() {
             </a>
           </div>
 
-          {error ? <div className="hint" style={{ color: "var(--danger)" }}>{error}</div> : null}
+          {error ? (
+            <div className="hint" style={{ color: "var(--danger)" }}>
+              {error}
+            </div>
+          ) : null}
         </form>
       </div>
     </div>
